@@ -8,8 +8,10 @@ import com.cnu.real_coding_server.service.valid.PostValidService;
 import java.util.List;
 import java.util.Optional;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
+@Slf4j
 @Service
 @RequiredArgsConstructor
 public class PostService {
@@ -23,6 +25,7 @@ public class PostService {
         if (postValidService.isSlangInclude(slangList, postRequest.getTitle(), postRequest.getContents())) {
             throw new SlangBadRequestException();
         }
+        log.info("정상 저장 확인");
         return postRepository.save(postRequest.toEntity());
     }
 

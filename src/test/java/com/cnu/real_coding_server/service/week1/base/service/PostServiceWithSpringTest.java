@@ -4,6 +4,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import com.cnu.real_coding_server.entity.Post;
 import com.cnu.real_coding_server.service.PostService;
+import com.cnu.real_coding_server.service.week1.practice.service.fixture.PostFixture;
 import java.util.Optional;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -18,7 +19,8 @@ public class PostServiceWithSpringTest {
     @DisplayName("테스트 코드에서 Spring Component 실행해보기")
     @Test
     void testDoCodeRun() {
-        Optional<Post> optPost = postService.getPost(1);
+        Post post = postService.createPost(PostFixture.getNormalPostRequest());
+        Optional<Post> optPost = postService.getPost(post.getId());
         assertThat(optPost.isPresent()).isFalse();
     }
 }
