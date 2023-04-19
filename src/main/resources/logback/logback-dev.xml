@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+  <!-- 로그파일 저장 경로 -->
+  <property name="LOG_DIR" value="/Users/inspire12/Documents/logs" />
+  <!-- CONSOLE -->
+  <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+    <layout class="ch.qos.logback.classic.PatternLayout">
+      <Pattern>
+        %highlight([%-5level]) %cyan(%d{yyyy-MM-dd HH:mm:ss.SSS}) : [%thread] %green([%logger:%line]) - %msg%n
+      </Pattern>
+    </layout>
+  </appender>
+  <!-- FILE 저장-->
+  <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+    <file>${LOG_DIR}/application.log</file>
+    <layout class="ch.qos.logback.classic.PatternLayout">
+      <Pattern>
+        %highlight([%-5level]) %cyan(%d{yyyy-MM-dd HH:mm:ss.SSS}) : %green([%logger{0}:%line]) - %msg%n
+      </Pattern>
+    </layout>
+    <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+      <fileNamePattern>${LOG_DIR}/application.log.%d{yyyy-MM-dd}</fileNamePattern>
+      <maxHistory>10</maxHistory>
+    </rollingPolicy>
+  </appender>
+  <root level="INFO">
+    <appender-ref ref="FILE" />
+    <appender-ref ref="CONSOLE" />
+  </root>
+  <logger name="org.hibernate.SQL" level="INFO" />
+</configuration>

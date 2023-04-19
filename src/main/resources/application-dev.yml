@@ -1,5 +1,6 @@
 spring:
   # H2 Setting Info (H2 Console? ???? ?? ???? ??)
+
   h2:
     console:
       enabled: true  # H2 Console? ???? ?? (H2 Console? H2 Database? UI? ????? ??)
@@ -21,5 +22,8 @@ spring:
       hibernate:
         format_sql: true # ???? query? ???
 
-logging.level:
-  org.hibernate.SQL: debug
+logging:
+  level:
+    org.hibernate.SQL: info
+  config: classpath:logback/logback-${spring.profiles.active}.xml
+
