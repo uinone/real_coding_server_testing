@@ -22,7 +22,11 @@ public class PostServiceWithSpringTest {
     @DisplayName("테스트 코드에서 Spring Component 실행해보기")
     @Test
     void testDoCodeRun() {
-        Optional<Post> optPost = postService.getPost(1);
+        // given
+        int testPostId = 1;
+        // when
+        Optional<Post> optPost = postService.getPost(testPostId);
+        // then
         assertThat(optPost.isPresent()).isFalse();
     }
 }
