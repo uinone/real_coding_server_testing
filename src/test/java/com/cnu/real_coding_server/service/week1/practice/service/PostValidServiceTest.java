@@ -23,9 +23,9 @@ public class PostValidServiceTest {
         String testTitle = "비속어가 섞인 제목";
         String testContent = "비속어가 섞인 욕";
         List<String> slangList = List.of("비속어", "비속어2");
-
+        // when 코드 실행
         boolean validPost = postValidService.isSlangInclude(slangList, testTitle, testContent);
-        // then 검증
+        // then 실행 결과 검증
         assertThat(validPost).isEqualTo(true);
     }
 }
