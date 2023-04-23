@@ -4,7 +4,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertAll;
 
 import com.cnu.real_coding_server.entity.Post;
-import com.cnu.real_coding_server.error.SlangBadRequestException;
 import com.cnu.real_coding_server.model.request.PostRequest;
 import com.cnu.real_coding_server.model.type.Tag;
 import com.cnu.real_coding_server.service.PostService;
@@ -58,7 +57,6 @@ public class PostServiceTest {
     }
 
     @DisplayName("비속어 제목에 포함된 저장/업데이트 테스트")
-    @Transactional
     @Test
     void updatePost() throws JsonProcessingException {
         // given
